@@ -1,8 +1,12 @@
+Anvo Network
+Copyright (c) 2026 Stratovera LLC and its contributors. All rights reserved.
+
+This software is based upon:
+
 eosnetworkfoundation/bn256
+Copyright (c) 2021-2022 EOS Network Foundation (ENF) and its contributors.
 
-Copyright (c) 2021-2022 EOS Network Foundation (ENF) and its contributors.  All rights reserved. 
-
-The MIT License
+MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
