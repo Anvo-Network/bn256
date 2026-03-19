@@ -13,6 +13,7 @@ add_test_executable(bn256_test bn256_test.cpp)
 add_test_executable(lattice_test lattice_test.cpp)
 add_test_executable(example_test example_test.cpp)
 add_test_executable(main_test main_test.cpp)
+add_test_executable(random_test random_test.cpp)
 
 add_executable (bn256_benchmark bn256_benchmark.cpp)
 target_link_libraries(bn256_benchmark bn256)
