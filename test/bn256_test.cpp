@@ -9,7 +9,7 @@
 #endif
 
 TEST_CASE("test g1 marshall", "[bn256]") {
-   auto [_, ga] = bn256::ramdom_g1();
+   auto [_, ga] = bn256::random_g1();
    std::array<uint8_t, 64> ma, mb;
    ga.marshal(ma);
 
@@ -22,7 +22,7 @@ TEST_CASE("test g1 marshall", "[bn256]") {
 }
 
 TEST_CASE("test g2 marshall", "[bn256]") {
-   auto [_, ga] = bn256::ramdom_g2();
+   auto [_, ga] = bn256::random_g2();
    std::array<uint8_t, 128> ma, mb;
    ga.marshal(ma);
 
@@ -37,8 +37,8 @@ TEST_CASE("test bilinearity", "[bn256]") {
    bn256::g2 c2{ bn256::twist_gen };
 
    for (auto i = 0U; i < 2; ++i) {
-      auto [a, p1] = bn256::ramdom_g1();
-      auto [b, p2] = bn256::ramdom_g2();
+      auto [a, p1] = bn256::random_g1();
+      auto [b, p2] = bn256::random_g2();
       bn256::gt e1 = bn256::pair(p1, p2);
 
       bn256::gt e2 = bn256::pair(c1, c2);
