@@ -177,7 +177,25 @@ int32_t g1_scalar_mul(std::span<const uint8_t, 64> marshaled_g1, std::span<const
 // to pair(g1,g2).
 gt miller(const g1& g1, const g2& g2) noexcept;
 
+// Type alias for a caller-provided random byte source
+using random_source = std::function<void(std::span<uint8_t>)>;
+
+// Default OS-backed cryptographically secure random source
+void default_random_source(std::span<uint8_t> buf);
+
+// Generate a random scalar uniformly distributed in [1, Order)
+uint255_t random_scalar(const random_source& rng = default_random_source);
+
+// Generate a random scalar and corresponding G1 element
+std::tuple<uint255_t, g1> random_g1(const random_source& rng = default_random_source);
+
+// Generate a random scalar and corresponding G2 element
+std::tuple<uint255_t, g2> random_g2(const random_source& rng = default_random_source);
+
+// Legacy API — deprecated, use random_g1()/random_g2() instead
+[[deprecated("use random_g1()")]]
 std::tuple<uint255_t, g1> ramdom_g1();
+[[deprecated("use random_g2()")]]
 std::tuple<uint255_t, g2> ramdom_g2();
 
 } // namespace bn256
