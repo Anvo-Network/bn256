@@ -33,9 +33,13 @@ struct is_error_code_enum<bn256::unmarshal_error> : true_type {};
 
 namespace bn256 {
 
-std::tuple<uint255_t, g1> ramdom_g1() {
-   auto k = random_255();
+std::tuple<uint255_t, g1> random_g1(const random_source& rng) {
+   auto k = random_scalar(rng);
    return std::tuple(k, g1::scalar_base_mult(k));
+}
+
+std::tuple<uint255_t, g1> ramdom_g1() {
+   return random_g1();
 }
 
 g1::g1(const curve_point& p) {
@@ -111,9 +115,13 @@ std::error_code g1::unmarshal(std::span<const uint8_t, 64> m) noexcept {
    return {};
 }
 
-std::tuple<uint255_t, g2> ramdom_g2() {
-   auto k = random_255();
+std::tuple<uint255_t, g2> random_g2(const random_source& rng) {
+   auto k = random_scalar(rng);
    return std::make_tuple(k, g2::scalar_base_mult(k));
+}
+
+std::tuple<uint255_t, g2> ramdom_g2() {
+   return random_g2();
 }
 
 g2::g2(const twist_point& p) {
